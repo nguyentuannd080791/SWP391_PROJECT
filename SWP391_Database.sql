@@ -139,7 +139,7 @@ CREATE TABLE dbo.Product_Image
 	FOREIGN KEY(product_id) REFERENCES dbo.Products(product_id)
 )
 
-CREATE TABLE Type_of_product
+CREATE TABLE dbo.Type_of_product
 (
 	type_id INT IDENTITY(1,1) PRIMARY KEY,
 	type_name VARCHAR(255) NOT NULL,
@@ -148,7 +148,7 @@ CREATE TABLE Type_of_product
 	FOREIGN KEY(product_id) REFERENCES dbo.Products(product_id)
 )
 
-CREATE TABLE Quality_control
+CREATE TABLE dbo.Quality_control
 (
 	product_id BIGINT PRIMARY KEY,
 	state VARCHAR(255) NOT NULL,
@@ -160,7 +160,7 @@ CREATE TABLE Quality_control
 	FOREIGN KEY(product_id) REFERENCES dbo.Products(product_id)
 )
 
-CREATE TABLE Inventory
+CREATE TABLE dbo.Inventory
 (
 	inventory_id VARCHAR(255) PRIMARY KEY,
 	stage_id VARCHAR(255) NOT NULL,
@@ -172,7 +172,7 @@ CREATE TABLE Inventory
 	FOREIGN KEY(product_id) REFERENCES dbo.Products(product_id)
 )
 
-CREATE TABLE Supplier
+CREATE TABLE dbo.Supplier
 (
 	supplier_id INT IDENTITY(1,1) PRIMARY KEY,
 	supplier_name VARCHAR(255) NOT NULL,
@@ -185,7 +185,7 @@ CREATE TABLE Supplier
 	payment_method VARCHAR(255) NOT NULL,
 )
 
-CREATE TABLE Inbound_INV
+CREATE TABLE dbo.Inbound_INV
 (
 	inbound_code BIGINT IDENTITY(1,1) PRIMARY KEY,
 	inbound_date DATETIME NOT NULL,
@@ -199,10 +199,10 @@ CREATE TABLE Inbound_INV
 	COST FLOAT NOT NULL,
 
 	FOREIGN KEY(employee_id) REFERENCES dbo.Employees(employee_id),
-	FOREIGN KEY(supplier_id) REFERENCES Supplier(supplier_id),
+	FOREIGN KEY(supplier_id) REFERENCES dbo.Supplier(supplier_id),
 )
 
-CREATE TABLE Outbound_INV
+CREATE TABLE dbo.Outbound_INV
 (
 	outbound_code BIGINT IDENTITY(1,1) PRIMARY KEY,
 	outbound_date DATETIME NOT NULL,
